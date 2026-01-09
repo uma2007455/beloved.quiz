@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💗 Just One Quiz 💗</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(255, 182, 193, 0.5);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container::before {
+        content: "💗 💕 💖 💞 💓 💝";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        font-size: 18px;
+        opacity: 0.2;
+    }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        color: #ff5fa2;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 18px;
+        margin: 20px 0 10px;
+        color: #444;
+    }
+
+    .options label {
+        display: block;
+        background: #ffe3ef;
+        margin: 10px 0;
+        padding: 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .options label:hover {
+        background: #ffbdd8;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    button {
+        background: #ff5fa2;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: #ff3d8a;
+    }
+
+    .result {
+        display: none;
+        font-size: 18px;
+        color: #444;
+        margin-top: 20px;
+    }
+
+    .password {
+        font-family: 'Pacifico', cursive;
+        font-size: 24px;
+        color: #ff3d8a;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>💗 Know Me Quiz 💗</h1>
+
+    <form id="quizForm">
+
+        <div class="question">1. What is my favourite colour?</div>
+        <div class="options">
+            <label><input type="radio" name="q1" value="0"> Blue</label>
+            <label><input type="radio" name="q1" value="1"> Pink</label>
+            <label><input type="radio" name="q1" value="0"> Black</label>
+        </div>
+
+        <div class="question">2. What do I love more?</div>
+        <div class="options">
+            <label><input type="radio" name="q2" value="1"> Late night talks</label>
+            <label><input type="radio" name="q2" value="0"> Sleeping early</label>
+            <label><input type="radio" name="q2" value="0"> Ignoring messages</label>
+        </div>
+
+        <div class="question">3. How important are you to me?</div>
+        <div class="options">
+            <label><input type="radio" name="q3" value="1"> Very special 💖</label>
+            <label><input type="radio" name="q3" value="0"> Normal</label>
+            <label><input type="radio" name="q3" value="0"> Just okay</label>
+        </div>
+
+        <button type="button" onclick="checkScore()">Submit 💕</button>
+    </form>
+
+    <div class="result" id="resultBox">
+        <div id="resultText"></div>
+        <div class="password" id="passwordText"></div>
+    </div>
+
+</div>
+
+<script>
+function checkScore() {
+    let score = 0;
+    const total = 3;
+
+    const form = document.getElementById("quizForm");
+    const answers = form.querySelectorAll("input[type=radio]:checked");
+
+    if (answers.length < total) {
+        alert("Answer all questions 💕");
+        return;
+    }
+
+    answers.forEach(ans => {
+        score += parseInt(ans.value);
+    });
+
+    const resultBox = document.getElementById("resultBox");
+    const resultText = document.getElementById("resultText");
+    const passwordText = document.getElementById("passwordText");
+
+    resultBox.style.display = "block";
+
+    if (score >= 2) {
+        resultText.innerHTML = "You really know me 🥹💗<br>Your password is:";
+        passwordText.innerHTML = "LOVE123";
+    } else {
+        resultText.innerHTML = "Hmm 😌<br>Buy me something first to know your password 💕";
+        passwordText.innerHTML = "";
+    }
+}
+</script>
+
+</body>
+</html>

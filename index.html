@@ -77,11 +77,17 @@ button{
 
 <body>
 <div class="container">
+<div id="welcome">
+  <h1>Hey Nikhil 💞</h1>
+  <p class="subtitle">Welcome to the Beloved Quiz ✨</p>
 
-<h1>Hey Nikhil 💕</h1>
-<p class="subtitle">Welcome to the Beloved Quiz ✨</p>
-
+  <button onclick="startQuiz()">Let’s Start Then 💖</button>
+</div>
+    
+    <div id="quiz" style="display:none;">
 <form onsubmit="sendResults(event)">
+    
+    
 
 <div class="question">1.what do you think i need the most from you ?</div>
 <div class="options">
@@ -110,6 +116,7 @@ button{
 
 <script>
 function sendResults(e){
+    
     e.preventDefault();
 
     const form = e.target;
@@ -129,6 +136,10 @@ function sendResults(e){
     window.location.href =
     "mailto:veeraumashalini@gmail.com?subject=Beloved Quiz Answers 💖&body=" +
     encodeURIComponent(body);
+}
+    function startQuiz(){
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
 }
 </script>
 
